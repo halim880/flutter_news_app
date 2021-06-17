@@ -17,10 +17,8 @@ class Author {
         lastName= json["last_name"],
         avatar= json["avatar"];
 
-    Map<String, dynamic> toJson() => {
-        "author_id": authorId,
-        "first_name": firstName,
-        "last_name": lastName,
-        "avatar": avatar,
-    };
+
+  String fullName(){
+    return firstName + " " + lastName;
+  }
 }

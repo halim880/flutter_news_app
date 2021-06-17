@@ -1,5 +1,7 @@
-class Image {
-    Image(
+import 'package:news_app/models/post.dart';
+
+class PostImage {
+    PostImage(
         this.imageId,
         this.imageUrl,
         this.imageDescription,
@@ -11,14 +13,14 @@ class Image {
     String imageUrl;
     String imageDescription;
     int postId;
-    int isFeatured;
+    bool isFeatured;
 
-    Image.fromJson(Map<String, dynamic> json):
+    PostImage.fromJson(Map<String, dynamic> json):
         imageId = json["image_id"],
         imageUrl = json["image_url"],
         imageDescription = json["image_description"],
         postId = json["post_id"],
-        isFeatured = json["is_featured"];
+        isFeatured = json["is_featured"]==0?false:true;
 
     Map<String, dynamic> toJson() => {
         "image_id": imageId,
@@ -27,4 +29,14 @@ class Image {
         "post_id": postId,
         "is_featured": isFeatured,
     };
+
+    static List<PostImage>  toImageList(List<Map<String, dynamic>> map){
+      List<PostImage> imgs = [];
+
+      for (var image in map) {
+        PostImage img = PostImage.fromJson(image);
+        imgs.add(img);
+      }
+      return imgs;
+    }
 }
