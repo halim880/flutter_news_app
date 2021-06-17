@@ -27,7 +27,7 @@ class PostCard extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              Flexible(
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,

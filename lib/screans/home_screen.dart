@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/models/post.dart';
 import 'package:news_app/screans/single_post.dart';
 import 'package:news_app/services/post_service.dart';
+import 'package:news_app/widgets/drwarWidget.dart';
 import 'package:news_app/widgets/error.dart' as widgets;
 import 'package:news_app/widgets/loading.dart';
 import 'package:news_app/widgets/post_card.dart';
@@ -30,25 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('News app'),
         centerTitle: true,
       ),
-      drawer: Drawer(
-        child: Center(
-          child: ListView(
-            children: [
-              DrawerHeader(
-                decoration: const BoxDecoration(color: Colors.teal),
-                child: Text("Header"),
-              ),
-              ListTile(
-                title: Text("Categories"),
-                onTap: (){
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, "/categories");
-                },
-              ),
-            ],
-          )
-        ),
-      ),
+      drawer: const DrawerWidget(),
       body: _homeScreen(),
     );
   }
@@ -101,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   width: double.infinity,
                   child: Image(
-                    image: ExactAssetImage("assets/images/placeholder.jpg"),
+                    image: ExactAssetImage("assets/images/placeholder.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -110,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     margin: EdgeInsets.only(bottom: 8),
                     padding: const EdgeInsets.all(15),
-                    color: Colors.grey.withAlpha(50),
+                    color: Colors.grey.withAlpha(100),
                     child: Text(posts[0].title,
                       style: TextStyle(fontSize: 18),
                     )

@@ -18,7 +18,7 @@ class Post {
   List<Comment>? comments;
   dynamic meta;
   DateTime? updatedAt;
-  List<PostImage>? images;
+  String? image;
   List<Tag>? tags;
 
 
@@ -34,7 +34,7 @@ class Post {
           this.comments,
           this.meta,
           this.updatedAt,
-          this.images,
+          this.image,
           this.tags,
       }
     );
@@ -50,11 +50,11 @@ class Post {
       meta = json["post_meta"],
       updatedAt = DateTime.parse(json["updated_at"]),
       author = Author.fromJson(json["author"]),
-      images = List<PostImage>.from(json["images"].map((x) => PostImage.fromJson(x))),
+      image = json['image'],
       tags = List<Tag>.from(json["tags"].map((x) => Tag.fromJson(x)));
 
-  String getFeaturedImage(){
-    return images![0].imageUrl;
+  String? getFeaturedImage(){
+    return image;
   }
 
   String authorName(){
@@ -66,9 +66,11 @@ class Post {
   }
 
   ImageProvider getImage(){
-    return const ExactAssetImage('assets/images/placeholder.jpg');
-    // if(post.getFeaturedImage() == null) {
+      return const ExactAssetImage('assets/images/placeholder.png');
+    // if(image==null) {
+    //   return const ExactAssetImage('assets/images/placeholder.png');
+    // } else{ 
+    //   return NetworkImage(image!);
     // }
-    // return NetworkImage(getFeaturedImage());
   }
 }

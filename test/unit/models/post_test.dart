@@ -49,9 +49,7 @@ void main() {
                         "avatar": "https://via.placeholder.com/100x100.png/007755?text=quia",
                         "email": "author@gmail.com"
                     },
-            "images": [
-
-            ],
+            "images": "",
             "tags": []
         };
 
@@ -61,10 +59,9 @@ void main() {
     expect(post.title, "Sint vero commodi natus velit adipisci delectus.");
     expect(post.content, "Voluptates ipsam perspiciatis omnis odit. Et et earum sint aperiam earum amet rerum cumque. Accusamus modi consequatur consectetur. Voluptas numquam iste et voluptatem.");
     expect(post.type, 'image');
-    // expect(post.comments, []);
     expect(post.author.runtimeType, Author);
     expect(post.category.runtimeType, Category);
-    expect(post.images, []);
+    expect(post.image, '');
     expect(post.tags, []);
   });
 }

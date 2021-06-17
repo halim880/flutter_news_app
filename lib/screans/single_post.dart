@@ -14,7 +14,60 @@ class _SinglePostState extends State<SinglePost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
+      appBar: AppBar(title: Text('News'),),
+      body: Column(
+        children: [
+          Container(  
+            width: double.infinity,
+            child: Image(
+              image: widget.post.getImage(),
+              fit: BoxFit.cover,
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              margin: EdgeInsets.only(bottom: 8),
+              padding: const EdgeInsets.all(15),
+              color: Colors.grey.withAlpha(50),
+              child: Text(widget.post.title,
+                
+                style: TextStyle(fontSize: 18, color: Colors.blueGrey),
+              )
+            )
+          ),
+
+          Container(
+            padding: EdgeInsets.all(15),
+            child: Text(widget.post.content,
+              style: TextStyle(fontSize: 14),
+            ),
+          ),
+          
+        ],
+      )
+    );
+  }
+
+  Widget _commentWidget(Comment comment){
+    return Card(
+      child: Container(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(comment.commentBody),
+            Text(comment.author.fullName())
+          ],
+        ))
+    );
+  }
+}
+
+
+/*
+
+CustomScrollView(
         slivers: [
           SliverAppBar(
             expandedHeight: 300,
@@ -54,21 +107,4 @@ class _SinglePostState extends State<SinglePost> {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _commentWidget(Comment comment){
-    return Card(
-      child: Container(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(comment.commentBody),
-            Text(comment.author.fullName())
-          ],
-        ))
-    );
-  }
-}
+        */
